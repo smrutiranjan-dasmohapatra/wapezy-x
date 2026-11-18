@@ -1,3 +1,4 @@
+
 import { useLayoutEffect, useRef, useState } from "react";
 
 import { SITE_NAME } from "../../utils/constants.js";
@@ -11,14 +12,14 @@ const links = [
   { label: "Process", href: "#how-it-works" },
   { label: "Businesses", href: "#business-types" },
   { label: "Benefits", href: "#why-wapezy" },
-  { label: "FAQs", href: "#faq" },
+  { label: "Faqs", href: "#faq" },
   { label: "Plans", href: "#pricing" },
 ];
 
 const socials = [
   { label: "Instagram", href: "https://instagram.com/" },
   { label: "LinkedIn", href: "https://linkedin.com/" },
-  { label: "Behance", href: "https://behance.net/" },
+  { label: "Twitter", href: "https://twitter.com/" },
 ];
 
 const dotShapes = [
@@ -481,7 +482,7 @@ export default function Navbar() {
       <div
         ref={menuRef}
         aria-hidden={!menuOpen}
-        className="invisible pointer-events-none fixed inset-0 z-[60] flex h-[100dvh] w-full flex-col overflow-y-auto bg-green-400 px-[3.5vw] pb-7 pt-5 text-white md:hidden"
+        className="invisible pointer-events-none fixed inset-0 z-[60] flex h-[100dvh] w-full flex-col overflow-y-auto bg-green-400 px-[3.5vw] pb-7 pt-5 text-green-950 md:hidden"
         style={{
           clipPath: "inset(100% 0% 0% 0%)",
         }}
@@ -494,7 +495,7 @@ export default function Navbar() {
               setActiveLink(null);
               closeMenu();
             }}
-            className="text-sm font-semibold text-white"
+            className="text-sm font-semibold text-green-950"
           >
             {SITE_NAME}
           </a>
@@ -503,7 +504,7 @@ export default function Navbar() {
             type="button"
             onClick={closeMenu}
             aria-label="Close menu"
-            className="text-sm font-medium text-white transition-opacity duration-300 hover:opacity-60"
+            className="text-sm font-medium text-green-950 transition-opacity duration-300 hover:opacity-60"
           >
             Close
           </button>
@@ -521,14 +522,14 @@ export default function Navbar() {
                 onClick={() => handleNavigation(link.href)}
                 aria-current={isActive ? "location" : undefined}
                 className={`
-                  mobile-menu-link w-fit font-sans
-                  text-[clamp(2.8rem,10vw,4.5rem)]
-                  leading-[1.12] tracking-[-0.065em]
+                  mobile-menu-link w-fit 
+                  text-[30px]
+                  leading-[1.5] tracking-[0.065em]
                   transition-colors duration-300
                   ${
                     isActive
-                      ? "font-bold text-white"
-                      : "font-medium text-white/65"
+                      ? "font-semibold text-green-950"
+                      : "font-medium text-green-950"
                   }
                 `}
               >
@@ -540,7 +541,9 @@ export default function Navbar() {
 
         {/* BOTTOM SOCIALS */}
         <div className="mobile-menu-bottom mt-12 shrink-0">
-          <p className="mb-5 text-sm font-medium text-white/65">Socials</p>
+          <p className="mb-5 text-sm font-medium text-green-950/65">
+            Socials
+          </p>
 
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
             {socials.map((social) => (
@@ -549,7 +552,7 @@ export default function Navbar() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold text-white transition-opacity duration-300 hover:opacity-60"
+                className="text-sm font-semibold text-green-950 transition-opacity duration-300 hover:opacity-60"
               >
                 {social.label}
               </a>
