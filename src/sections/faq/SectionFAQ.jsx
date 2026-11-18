@@ -1,4 +1,3 @@
-
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
@@ -77,9 +76,7 @@ export default function SectionFAQ() {
         });
 
         gsap.set(content, {
-          clipPath: isOpen
-            ? "inset(0% 0% 0% 0%)"
-            : "inset(0% 0% 100% 0%)",
+          clipPath: isOpen ? "inset(0% 0% 0% 0%)" : "inset(0% 0% 100% 0%)",
           y: 0,
         });
       });
@@ -120,7 +117,7 @@ export default function SectionFAQ() {
           duration: 0.6,
           ease: "power3.inOut",
         },
-        0
+        0,
       );
 
       tl.to(
@@ -131,7 +128,7 @@ export default function SectionFAQ() {
           duration: 0.65,
           ease: "power3.out",
         },
-        0.12
+        0.12,
       );
     } else {
       tl.to(content, {
@@ -154,7 +151,7 @@ export default function SectionFAQ() {
             });
           },
         },
-        "-=0.12"
+        "-=0.12",
       );
     }
   };
@@ -167,7 +164,7 @@ export default function SectionFAQ() {
     setActiveIndexes((prev) =>
       isCurrentlyOpen
         ? prev.filter((item) => item !== index)
-        : [...prev, index]
+        : [...prev, index],
     );
 
     animateFAQ(index, !isCurrentlyOpen);
@@ -192,7 +189,6 @@ export default function SectionFAQ() {
       className="relative w-full py-20 md:py-28"
     >
       <div className="w-full">
-
         {/* SECTION HEADING */}
         <SectionHeading
           label="FAQs"
@@ -202,15 +198,14 @@ export default function SectionFAQ() {
 
         {/* FAQ CONTENT */}
         <div className="mt-30 grid w-full grid-cols-1 border-t border-b border-black/20 lg:grid-cols-[0.78fr_1fr]">
-
           {/* LEFT SIDE - HEADING */}
           <div className="border-b border-black/20 p-8 sm:p-10 md:p-14 lg:border-b-0 lg:border-r lg:p-12 xl:p-16">
             <div>
-              <h2 className="max-w-lg text-4xl font-medium leading-[1.05] tracking-[-0.045em] text-[#1b350d] sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl">
+              <h2 className="max-w-lg text-3xl font-medium leading-[1.05] tracking-[-0.045em] text-[#1b350d] sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl">
                 FAQs
               </h2>
 
-              <p className="mt-6 max-w-sm text-sm leading-7 text-black/55 sm:text-base">
+              <p className="mt-6 max-w-sm text-sm leading-7 text-green-950 sm:text-base">
                 Everything you need to know about managing your business with
                 Wapezy.
               </p>
@@ -233,9 +228,9 @@ export default function SectionFAQ() {
                     onClick={() => handleToggle(index)}
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${index}`}
-                    className="flex w-full items-center justify-between gap-5 px-6 py-7 text-left sm:px-8 sm:py-9 md:px-10 md:py-10"
+                    className="flex w-full items-center justify-between gap-5 px-5 py-6 text-left sm:px-8 sm:py-9 md:px-10 md:py-10"
                   >
-                    <span className="max-w-3xl text-2xl font-normal leading-[1.25] tracking-[-0.03em] text-green-950 sm:text-[20px]">
+                    <span className="max-w-3xl text-lg font-normal leading-[1.3] tracking-[-0.03em] text-green-950 sm:text-xl">
                       {faq.question}
                     </span>
 
@@ -266,9 +261,9 @@ export default function SectionFAQ() {
                   >
                     <div
                       ref={(el) => (contentRefs.current[index] = el)}
-                      className="max-w-4xl px-6 pb-8 sm:px-8 sm:pb-10 md:px-10"
+                      className="max-w-4xl px-5 pb-7 sm:px-8 sm:pb-10 md:px-10"
                     >
-                      <p className="text-sm font-medium leading-relaxed text-green-900 sm:text-base">
+                      <p className="text-sm font-medium leading-relaxed text-green-950 sm:text-base">
                         {faq.answer}
                       </p>
                     </div>

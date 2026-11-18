@@ -1,4 +1,3 @@
-
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -115,17 +114,13 @@ function PriceColumn({
   return (
     <article
       className={`price-column flex min-w-0 flex-col rounded-[3px] p-6 sm:p-7 lg:p-8 ${
-        isSmart
-          ? "bg-[#211D1F] text-white"
-          : "bg-[#4ADE80] text-[#211D1F]"
+        isSmart ? "bg-[#211D1F] text-white" : "bg-[#4ADE80] text-[#211D1F]"
       }`}
     >
       {/* HEADER */}
 
       <div className="flex items-start justify-between gap-4">
-        <h3 className="pt-1 text-[15px] font-bold tracking-tight">
-          {name}
-        </h3>
+        <h3 className="pt-1 text-[15px] font-bold tracking-tight">{name}</h3>
 
         {isSmart ? <SmartIcon /> : <BasicIcon />}
       </div>
@@ -254,10 +249,9 @@ export default function PriceSection() {
     <section
       ref={sectionRef}
       className="relative  px-4 sm:px-6 lg:px-8"
-      id='pricing'
+      id="pricing"
     >
       <div className="mx-auto max-w-[1440px]">
-
         {/* SECTION HEADING */}
         <SectionHeading
           label="Simple Pricing"
@@ -267,7 +261,6 @@ export default function PriceSection() {
 
         {/* PRICING CARDS */}
         <div className="price-grid mt-30 grid grid-cols-1 items-stretch gap-5 lg:grid-cols-2">
-
           {/* BASIC PLAN */}
           <PriceColumn
             name="Basic"
@@ -287,7 +280,6 @@ export default function PriceSection() {
             type="smart"
             href="https://www.wapezy.com/#em-cta"
           />
-
         </div>
       </div>
     </section>

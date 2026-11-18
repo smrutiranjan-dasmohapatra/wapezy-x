@@ -1,4 +1,3 @@
-
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -164,20 +163,9 @@ function FeatureIcon({ type }) {
           className="w-full h-full overflow-visible"
         >
           <g className="icon-main">
-            <rect
-              x="12"
-              y="19"
-              width="96"
-              height="69"
-              rx="13"
-              fill="#183C08"
-            />
+            <rect x="12" y="19" width="96" height="69" rx="13" fill="#183C08" />
 
-            <path
-              d="M12 38H108"
-              stroke="#58D77C"
-              strokeWidth="7"
-            />
+            <path d="M12 38H108" stroke="#58D77C" strokeWidth="7" />
 
             <path
               d="M28 62H52"
@@ -190,13 +178,7 @@ function FeatureIcon({ type }) {
           <g className="icon-coin">
             <circle cx="91" cy="91" r="23" fill="#58D77C" />
 
-            <circle
-              cx="91"
-              cy="91"
-              r="17"
-              stroke="#183C08"
-              strokeWidth="2.5"
-            />
+            <circle cx="91" cy="91" r="17" stroke="#183C08" strokeWidth="2.5" />
 
             <path
               d="M98 82C95 77 83 78 83 85C83 91 99 89 99 97C99 104 86 106 82 99M91 74V108"
@@ -253,7 +235,7 @@ export default function ReasonSection() {
             rotation: 0,
             duration: 0.8,
             ease: "back.out(1.8)",
-          }
+          },
         );
 
         if (main) {
@@ -266,7 +248,7 @@ export default function ReasonSection() {
               duration: 0.5,
               ease: "power3.out",
             },
-            "-=0.55"
+            "-=0.55",
           );
         }
 
@@ -281,7 +263,7 @@ export default function ReasonSection() {
               duration: 0.6,
               ease: "back.out(2)",
             },
-            "-=0.3"
+            "-=0.3",
           );
         }
 
@@ -296,7 +278,7 @@ export default function ReasonSection() {
               stagger: 0.1,
               ease: "back.out(2)",
             },
-            "-=0.35"
+            "-=0.35",
           );
         }
 
@@ -314,7 +296,7 @@ export default function ReasonSection() {
               duration: 0.6,
               ease: "back.out(2.5)",
             },
-            "-=0.35"
+            "-=0.35",
           );
         }
 
@@ -332,7 +314,7 @@ export default function ReasonSection() {
               duration: 0.5,
               ease: "back.out(2)",
             },
-            "-=0.35"
+            "-=0.35",
           );
         }
 
@@ -363,13 +345,12 @@ export default function ReasonSection() {
       <SectionHeading
         label="Why Wapezy?"
         text="A simpler way to manage orders, appointments, payments and customer conversations."
-        className="px-[3.5vw] pb-0"
+        className="px-[2vw] pb-20 max-md:px-4"
       />
 
       {/* OUTER BORDER CONTAINER */}
 
       <div className="w-full border-l border-[#183C08]/15">
-
         {features.map((item) => (
           <article
             key={item.id}
@@ -476,10 +457,8 @@ export default function ReasonSection() {
                 {item.description}
               </p>
             </div>
-
           </article>
         ))}
-
       </div>
     </section>
   );

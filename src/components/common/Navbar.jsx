@@ -111,7 +111,6 @@ export default function Navbar() {
       const documentHeight = document.documentElement.scrollHeight;
       const viewportBottom = scrollY + window.innerHeight;
 
-      // NO ACTIVE LINK IN HERO / BEFORE FIRST SECTION
       const firstSection = sections[0].element;
       const firstSectionTop =
         firstSection.getBoundingClientRect().top + scrollY;
@@ -121,7 +120,6 @@ export default function Navbar() {
         return;
       }
 
-      // LAST SECTION AT PAGE BOTTOM
       if (viewportBottom >= documentHeight - 2 && sections.length) {
         setActiveLink(sections[sections.length - 1].href);
         return;
@@ -129,7 +127,6 @@ export default function Navbar() {
 
       let currentSection = null;
 
-      // FIND SECTION AT ACTIVATION POINT
       for (const section of sections) {
         const rect = section.element.getBoundingClientRect();
 
@@ -139,13 +136,11 @@ export default function Navbar() {
         }
       }
 
-      // FALLBACK TO CLOSEST SECTION
       if (!currentSection) {
         let closestDistance = Infinity;
 
         sections.forEach((section) => {
           const rect = section.element.getBoundingClientRect();
-
           const distance = Math.abs(rect.top - activationPoint);
 
           if (distance < closestDistance) {
@@ -392,7 +387,7 @@ export default function Navbar() {
             <img
               src="/images/l.png"
               alt={SITE_NAME}
-              className="h-9 w-auto object-contain"
+              className="h-7 w-auto object-contain sm:h-9"
             />
           </a>
 

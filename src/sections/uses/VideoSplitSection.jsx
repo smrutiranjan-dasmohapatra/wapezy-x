@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect, useCallback } from "react";
 import SectionHeading from "../../components/common/SectionHeading.jsx";
 
@@ -30,9 +29,7 @@ export default function VideoSplitSection() {
     }
 
     const otherVideo =
-      videoRef === leftVideoRef
-        ? rightVideoRef.current
-        : leftVideoRef.current;
+      videoRef === leftVideoRef ? rightVideoRef.current : leftVideoRef.current;
 
     if (otherVideo && !otherVideo.paused) {
       otherVideo.pause();
@@ -64,10 +61,7 @@ export default function VideoSplitSection() {
     document.addEventListener("fullscreenchange", handleFullscreenChange);
 
     return () => {
-      document.removeEventListener(
-        "fullscreenchange",
-        handleFullscreenChange
-      );
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
   }, []);
 
@@ -119,7 +113,7 @@ export default function VideoSplitSection() {
           stopVideos();
         }
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
 
     observer.observe(section);
@@ -160,10 +154,8 @@ export default function VideoSplitSection() {
         src={thumbnail}
         alt={`${label} video preview`}
         loading="lazy"
-        className={`absolute inset-0 z-10 m-auto h-[65%] w-[65%] object-contain transition-opacity duration-300 md:h-[65%] md:w-[65%] lg:h-[65%] lg:w-[65%] ${
-          playing
-            ? "pointer-events-none opacity-0"
-            : "opacity-100"
+        className={`absolute inset-0 z-10 m-auto h-[65%] w-[65%] object-contain transition-opacity duration-300 ${
+          playing ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
       />
 
@@ -172,9 +164,7 @@ export default function VideoSplitSection() {
         ref={videoRef}
         src={source}
         className={`absolute inset-0 z-10 h-full w-full object-contain transition-opacity duration-300 ${
-          playing
-            ? "opacity-100"
-            : "pointer-events-none opacity-0"
+          playing ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         muted={muted}
         playsInline
@@ -204,14 +194,16 @@ export default function VideoSplitSection() {
           console.error(
             `${label} video error:`,
             event.currentTarget.error,
-            source
+            source,
           );
         }}
       />
 
       {/* LABEL */}
       <div className="absolute left-[3.2%] top-[3.8%] z-20">
-        <span className={`text-[30px] font-medium ${theme.label}`}>
+        <span
+          className={`text-[30px] font-medium max-md:text-[22px] ${theme.label}`}
+        >
           {label}
         </span>
       </div>
@@ -272,8 +264,7 @@ export default function VideoSplitSection() {
             aria-label="Toggle fullscreen"
             className={`flex h-12 w-12 items-center justify-center rounded-full ${theme.control} transition-colors ${theme.hover}`}
           >
-            {fullscreen &&
-            document.fullscreenElement === playerRef.current ? (
+            {fullscreen && document.fullscreenElement === playerRef.current ? (
               <svg
                 viewBox="0 0 24 24"
                 className="h-5 w-5"
@@ -314,7 +305,6 @@ export default function VideoSplitSection() {
     </div>
   );
 
-  // MAIN SECTION
   return (
     <section
       ref={sectionRef}
@@ -324,11 +314,11 @@ export default function VideoSplitSection() {
       <SectionHeading
         label="How Wapezy Works "
         text="Two one-minute videos. One for orders, one for appointments. See how simple it is with Wapezy."
-        className="px-[2vw] pt-0 max-md:px-4"
+        className="px-[2vw] pb-20 max-md:px-4"
       />
 
       {/* VIDEO CONTAINER */}
-      <div className="relative flex h-[70vh] min-h-[480px] max-h-[680px] w-full gap-4 px-10 max-md:h-auto max-md:min-h-0 max-md:max-h-none max-md:flex-col max-md:gap-4 max-md:px-0">
+      <div className="relative flex h-[70vh] min-h-[480px] max-h-[680px] w-full gap-4 px-10 max-md:h-auto max-md:min-h-0 max-md:max-h-none max-md:flex-col max-md:gap-4 max-md:px-5">
         {/* ORDER VIDEO */}
         {renderVideo({
           playerRef: leftPlayerRef,
@@ -343,8 +333,7 @@ export default function VideoSplitSection() {
             panel: "bg-[#FCE7EF]",
             background:
               "bg-gradient-to-br from-[#FFF1F5] via-[#FCE4EC] to-[#F8D4E1]",
-            glow:
-              "-right-20 -top-20 h-80 w-80 rounded-full bg-[#F4A9C4]/25 blur-3xl",
+            glow: "-right-20 -top-20 h-80 w-80 rounded-full bg-[#F4A9C4]/25 blur-3xl",
             label: "text-[#783C54]",
             play: "bg-[#ECA6C0] text-[#54283C]",
             control: "bg-[#EAB5C9] text-[#54283C]",
@@ -366,8 +355,7 @@ export default function VideoSplitSection() {
             panel: "bg-[#E9E8FA]",
             background:
               "bg-gradient-to-br from-[#F4F1FF] via-[#E9E5FA] to-[#DCD7F4]",
-            glow:
-              "-bottom-20 -left-20 h-80 w-80 rounded-full bg-[#AFA5E8]/25 blur-3xl",
+            glow: "-bottom-20 -left-20 h-80 w-80 rounded-full bg-[#AFA5E8]/25 blur-3xl",
             label: "text-[#49416F]",
             play: "bg-[#B8AFE9] text-[#342D5D]",
             control: "bg-[#C6BFED] text-[#342D5D]",

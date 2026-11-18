@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Lenis from "lenis";
 
@@ -10,33 +9,29 @@ gsap.registerPlugin(ScrollTrigger);
 export default function useLenis() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.5,
+      duration: 1.2,
 
-      // Smooth interpolation
+      // Desktop smooth scrolling
       lerp: 0.065,
-
-      // Wheel control
       smoothWheel: true,
       wheelMultiplier: 0.55,
 
-      // Touch control
-      syncTouch: false,
-      touchMultiplier: 1,
+      // Mobile smooth scrolling
+      syncTouch: true,
+      syncTouchLerp: 0.08,
+      touchMultiplier: 1.5,
 
-      // Prevent excessive scroll acceleration
       infinite: false,
     });
 
+    // GSAP synchronization
     const update = (time) => {
       lenis.raf(time * 1000);
     };
 
-    // Synchronize GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
     gsap.ticker.add(update);
-
-    // Keep GSAP and Lenis synchronized
     gsap.ticker.lagSmoothing(0);
 
     return () => {
