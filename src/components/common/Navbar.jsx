@@ -411,7 +411,7 @@ export default function Navbar() {
                       ${
                         isActive
                           ? "text-sm font-bold text-green-600"
-                          : "text-sm font-medium text-green-950"
+                          : "text-sm font-semibold text-green-950"
                       }
                     `}
                   >

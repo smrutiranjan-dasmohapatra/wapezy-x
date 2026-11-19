@@ -443,7 +443,7 @@ export default function ReasonSection() {
               <p
                 className="
                   feature-description
-                  text-[#075B39]
+                  text-green-950
                   text-[14px]
                   leading-[1.7]
                   font-medium

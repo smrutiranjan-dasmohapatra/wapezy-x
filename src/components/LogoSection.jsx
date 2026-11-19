@@ -42,7 +42,7 @@ export default function LogoSection() {
         fixed bottom-0 left-0 z-0
         flex h-[45vh] min-h-[260px] w-full
         items-center justify-center
-        overflow-hidden bg-[#84fc90]
+        overflow-hidden bg-green-400
         pointer-events-none
         sm:h-[55vh] lg:h-[60vh]
       "

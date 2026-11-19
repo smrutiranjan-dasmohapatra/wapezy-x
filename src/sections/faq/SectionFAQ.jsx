@@ -1,3 +1,4 @@
+
 import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
@@ -76,7 +77,9 @@ export default function SectionFAQ() {
         });
 
         gsap.set(content, {
-          clipPath: isOpen ? "inset(0% 0% 0% 0%)" : "inset(0% 0% 100% 0%)",
+          clipPath: isOpen
+            ? "inset(0% 0% 0% 0%)"
+            : "inset(0% 0% 100% 0%)",
           y: 0,
         });
       });
@@ -198,8 +201,9 @@ export default function SectionFAQ() {
 
         {/* FAQ CONTENT */}
         <div className="mt-30 grid w-full grid-cols-1 border-t border-b border-black/20 lg:grid-cols-[0.78fr_1fr]">
-          {/* LEFT SIDE - HEADING */}
-          <div className="border-b border-black/20 p-8 sm:p-10 md:p-14 lg:border-b-0 lg:border-r lg:p-12 xl:p-16">
+
+          {/* LEFT SIDE - HEADING (HIDDEN ON SMALL MOBILE) */}
+          <div className="hidden border-b border-black/20 p-8 sm:block sm:p-10 md:p-14 lg:border-b-0 lg:border-r lg:p-12 xl:p-16">
             <div>
               <h2 className="max-w-lg text-3xl font-medium leading-[1.05] tracking-[-0.045em] text-[#1b350d] sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl">
                 FAQs
@@ -230,7 +234,7 @@ export default function SectionFAQ() {
                     aria-controls={`faq-answer-${index}`}
                     className="flex w-full items-center justify-between gap-5 px-5 py-6 text-left sm:px-8 sm:py-9 md:px-10 md:py-10"
                   >
-                    <span className="max-w-3xl text-lg font-normal leading-[1.3] tracking-[-0.03em] text-green-950 sm:text-xl">
+                    <span className="max-w-3xl text-base font-normal leading-[1.3] tracking-[-0.03em] text-green-950 sm:text-xl">
                       {faq.question}
                     </span>
 
@@ -263,7 +267,7 @@ export default function SectionFAQ() {
                       ref={(el) => (contentRefs.current[index] = el)}
                       className="max-w-4xl px-5 pb-7 sm:px-8 sm:pb-10 md:px-10"
                     >
-                      <p className="text-sm font-medium leading-relaxed text-green-950 sm:text-base">
+                      <p className="text-[13px] font-medium leading-relaxed text-green-950 sm:text-base">
                         {faq.answer}
                       </p>
                     </div>

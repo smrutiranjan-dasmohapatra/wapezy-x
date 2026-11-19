@@ -222,7 +222,7 @@ export default function VideoSection() {
         </button>
 
         {/* Bottom controls */}
-        <div className="absolute bottom-0 left-0 z-20 w-full px-[3.2%] pb-[3.8%]">
+        <div className="absolute bottom-0 left-0 z-20 w-full px-[3.2%] pb-[3.8%] max-sm:pb-[7%]">
           <div className="flex items-center justify-between">
 
             {/* Left controls */}
