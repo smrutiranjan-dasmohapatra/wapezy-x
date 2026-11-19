@@ -19,11 +19,13 @@ export default function VideoSection() {
     const video = videoRef.current;
     if (!video) return;
 
-    video.play().then(() => {
-      setIsPlaying(true);
-    }).catch((error) => {
-      console.error("Video playback error:", error);
-    });
+    video.play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch((error) => {
+        console.error("Video playback error:", error);
+      });
   };
 
   const pauseVideo = () => {
@@ -63,7 +65,10 @@ export default function VideoSection() {
       );
     };
 
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener(
+      "fullscreenchange",
+      handleFullscreenChange
+    );
 
     return () => {
       document.removeEventListener(
@@ -115,7 +120,6 @@ export default function VideoSection() {
         bottom: "4vh",
         borderRadius: "4px",
         overflow: "hidden",
-        force3D: true,
       });
 
       // Expand smoothly
@@ -188,10 +192,12 @@ export default function VideoSection() {
         ref={playerRef}
         className="group absolute overflow-hidden bg-green-800"
       >
-        {/* Video - hidden until Play is clicked */}
+        {/* Video */}
         <div
           className={`absolute inset-0 overflow-hidden bg-black transition-opacity duration-500 ${
-            isPlaying ? "opacity-100" : "opacity-0 pointer-events-none"
+            isPlaying
+              ? "opacity-100"
+              : "opacity-0 pointer-events-none"
           }`}
         >
           <video
@@ -222,14 +228,13 @@ export default function VideoSection() {
         </button>
 
         {/* Bottom controls */}
-        <div className="absolute bottom-0 left-0 z-20 w-full px-[3.2%] pb-[3.8%] max-sm:pb-[7%]">
+        <div className="absolute bottom-0 left-0 z-20 w-full px-[3.2%] pb-[3.8%] max-sm:pb-16">
           <div className="flex items-center justify-between">
 
-            {/* Left controls */}
+            {/* Mute button */}
             <div className="flex items-center gap-3">
-
-              {/* Mute button */}
               <button
+                type="button"
                 onClick={toggleMute}
                 aria-label={isMuted ? "Unmute video" : "Mute video"}
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#203b0d] text-white/70 transition-colors hover:bg-[#294a12]"
@@ -258,11 +263,11 @@ export default function VideoSection() {
                   </svg>
                 )}
               </button>
-
             </div>
 
             {/* Fullscreen button */}
             <button
+              type="button"
               onClick={toggleFullscreen}
               aria-label={
                 isFullscreen ? "Exit fullscreen" : "Enter fullscreen"

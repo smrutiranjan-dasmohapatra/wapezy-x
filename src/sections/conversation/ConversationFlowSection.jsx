@@ -18,6 +18,8 @@ export default function StorySection() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      const isMobile = window.matchMedia("(max-width: 639px)").matches;
+
       const messages = [
         messageOneRef.current,
         messageTwoRef.current,
@@ -28,151 +30,69 @@ export default function StorySection() {
 
       gsap.set(messages, {
         autoAlpha: 0,
-        y: 18,
-        scale: 0.96,
-        transformOrigin: "center center",
-        force3D: true,
+        y: 14,
       });
 
       gsap.set(storyRef.current, {
-        scale: 1,
         x: 0,
         y: 0,
-        transformOrigin: "center center",
-        force3D: true,
+        scale: 1,
       });
 
-      const mm = gsap.matchMedia();
-
-      // MOBILE ANIMATION
-      mm.add("(max-width: 639px)", () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=45%",
-            toggleActions: "play none none none",
-            once: true,
-            pin: false,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        tl.to(storyRef.current, {
-          scale: 0.78,
-          x: 0,
-          y: "-22vh",
-          duration: 0.18,
-          ease: "none",
-        }, 0)
-
-        .to(messageOneRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.12,
-          ease: "power2.out",
-        }, 0.18)
-
-        .to(messageTwoRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.12,
-          ease: "power2.out",
-        }, 0.32)
-
-        .to(messageThreeRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.12,
-          ease: "power2.out",
-        }, 0.46)
-
-        .to(messageFourRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.12,
-          ease: "power2.out",
-        }, 0.60)
-
-        .to(confirmedRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.15,
-          ease: "power2.out",
-        }, 0.74);
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          toggleActions: "play none none none",
+          once: true,
+        },
       });
 
-      // DESKTOP ANIMATION
-      mm.add("(min-width: 640px)", () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "+=45%",
-            toggleActions: "play none none none",
-            once: true,
-            pin: false,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        tl.to(storyRef.current, {
-          scale: 0.52,
-          x: "-27vw",
-          y: "-14vh",
-          duration: 0.18,
-          ease: "none",
-        }, 0)
-
-        .to(messageOneRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.12,
-          ease: "power2.out",
-        }, 0.18)
-
-        .to(messageTwoRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.12,
-          ease: "power2.out",
-        }, 0.32)
-
-        .to(messageThreeRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.12,
-          ease: "power2.out",
-        }, 0.46)
-
-        .to(messageFourRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.12,
-          ease: "power2.out",
-        }, 0.60)
-
-        .to(confirmedRef.current, {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.15,
-          ease: "power2.out",
-        }, 0.74);
+      // Heading movement
+      tl.to(storyRef.current, {
+        scale: isMobile ? 0.82 : 0.58,
+        x: isMobile ? 0 : "-27vw",
+        y: isMobile ? "-17vh" : "-14vh",
+        duration: 0.8,
+        ease: "power2.inOut",
       });
 
-      ScrollTrigger.refresh();
+      // Conversation reveal
+      tl.to(messageOneRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      }, "-=0.1");
 
-      return () => mm.revert();
+      tl.to(messageTwoRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      }, "+=0.12");
+
+      tl.to(messageThreeRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      }, "+=0.12");
+
+      tl.to(messageFourRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out",
+      }, "+=0.12");
+
+      tl.to(confirmedRef.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.45,
+        ease: "power2.out",
+      }, "+=0.12");
+
     }, sectionRef);
 
     return () => ctx.revert();
@@ -199,7 +119,6 @@ export default function StorySection() {
       {/* WHATSAPP CONVERSATION */}
       <div className="absolute right-[9vw] top-[68%] z-10 flex w-[min(38vw,460px)] -translate-y-1/2 flex-col gap-3 max-sm:left-1/2 max-sm:right-auto max-sm:top-[60%] max-sm:w-[min(88vw,390px)] max-sm:-translate-x-1/2 max-sm:translate-y-0 max-sm:gap-2 sm:max-md:right-[6vw] sm:max-md:w-[min(48vw,420px)]">
 
-        {/* 01 - CUSTOMER */}
         <div
           ref={messageOneRef}
           className="ml-auto max-w-[80%] rounded-[18px] rounded-tr-[4px] bg-[#d9fdd3] px-5 py-3.5 text-base font-medium leading-snug max-sm:max-w-[82%] max-sm:rounded-[15px] max-sm:px-4 max-sm:py-2.5 max-sm:text-[13px]"
@@ -207,7 +126,6 @@ export default function StorySection() {
           Hi 👋
         </div>
 
-        {/* 02 - WAPEZY */}
         <div
           ref={messageTwoRef}
           className="max-w-[88%] rounded-[18px] rounded-tl-[4px] border border-green-950/10 bg-white px-5 py-3.5 text-base font-medium leading-snug max-sm:max-w-[90%] max-sm:rounded-[15px] max-sm:px-4 max-sm:py-2.5 max-sm:text-[13px]"
@@ -215,7 +133,6 @@ export default function StorySection() {
           Hi! 👋 How can I help you today?
         </div>
 
-        {/* 03 - CUSTOMER */}
         <div
           ref={messageThreeRef}
           className="ml-auto max-w-[88%] rounded-[18px] rounded-tr-[4px] bg-[#d9fdd3] px-5 py-3.5 text-base font-medium leading-snug max-sm:max-w-[88%] max-sm:rounded-[15px] max-sm:px-4 max-sm:py-2.5 max-sm:text-[13px]"
@@ -223,7 +140,6 @@ export default function StorySection() {
           I'd like to book an appointment for tomorrow.
         </div>
 
-        {/* 04 - WAPEZY */}
         <div
           ref={messageFourRef}
           className="max-w-[88%] rounded-[18px] rounded-tl-[4px] border border-green-950/10 bg-white px-5 py-3.5 text-base font-medium leading-snug max-sm:max-w-[94%] max-sm:rounded-[15px] max-sm:px-4 max-sm:py-2.5 max-sm:text-[13px]"
@@ -231,7 +147,6 @@ export default function StorySection() {
           Great! I have a slot available at 11:00 AM. Would that work for you?
         </div>
 
-        {/* 05 - CONFIRMATION */}
         <div
           ref={confirmedRef}
           className="mt-2 max-w-[92%] rounded-[18px] rounded-tl-[4px] border border-[#25D366]/30 bg-[#25D366]/10 px-5 py-4 max-sm:mt-1 max-sm:max-w-[96%] max-sm:rounded-[15px] max-sm:px-4 max-sm:py-3"
