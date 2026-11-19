@@ -1,4 +1,3 @@
-
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -44,7 +43,10 @@ export default function LogoSection() {
         items-center justify-center
         overflow-hidden bg-green-400
         pointer-events-none
-        sm:h-[55vh] lg:h-[60vh]
+        max-sm:h-[22svh] max-sm:min-h-[120px]
+        max-sm:items-end max-sm:pb-1
+        sm:h-[55vh]
+        lg:h-[60vh]
       "
     >
       <h1

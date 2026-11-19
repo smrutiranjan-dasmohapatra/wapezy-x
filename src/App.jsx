@@ -46,7 +46,9 @@ function App() {
         <VideoSplitSection />
 
         <BusinessSection />
+
         <ReasonSection />
+
         <SectionFAQ />
 
         <PriceSection />
@@ -56,8 +58,8 @@ function App() {
         <Footer />
       </div>
 
-      {/* Half viewport of reveal scroll space */}
-      <div className="relative z-10 h-[50vh] w-full pointer-events-none" />
+      {/* Logo reveal scroll space */}
+      <div className="relative z-10 h-[50vh] w-full pointer-events-none max-sm:h-[18svh]" />
     </main>
   );
 }
