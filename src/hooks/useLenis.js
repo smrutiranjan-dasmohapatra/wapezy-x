@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import Lenis from "lenis";
 
@@ -8,19 +9,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function useLenis() {
   useEffect(() => {
+    // Normal native scrolling on mobile
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
+    if (isMobile) {
+      ScrollTrigger.refresh();
+      return;
+    }
+
+    // Lenis smooth scrolling on desktop
     const lenis = new Lenis({
       duration: 1.2,
-
-      // Desktop smooth scrolling
       lerp: 0.065,
       smoothWheel: true,
       wheelMultiplier: 0.55,
-
-      // Mobile smooth scrolling
-      syncTouch: true,
-      syncTouchLerp: 0.08,
-      touchMultiplier: 1.5,
-
       infinite: false,
     });
 
@@ -33,6 +35,8 @@ export default function useLenis() {
 
     gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
+
+    ScrollTrigger.refresh();
 
     return () => {
       gsap.ticker.remove(update);
